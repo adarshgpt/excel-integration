@@ -46,7 +46,9 @@ public class ReadExcelHelper {
 
 					if (cellIndex == 0) { // URL
 						url.setUrl(String.valueOf(currentCell.getStringCellValue()));
-					} else if (cellIndex == 1) { // Location
+					} else if (cellIndex == 1) { // Key
+						url.setKey(currentCell.getStringCellValue());
+					} else if (cellIndex == 2) { // Location
 						url.setLocation(currentCell.getStringCellValue());
 					}
 
