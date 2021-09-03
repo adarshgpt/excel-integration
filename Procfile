@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/* WptExcelIntegration --port $PORT
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* com.wptexcelintegration.WptExcelIntegration --port $PORT
