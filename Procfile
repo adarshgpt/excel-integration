@@ -1,1 +1,1 @@
-java $JAVA_OPTS -jar target/wpt-excel-integration-0.0.1-SNAPSHOT.jar --server.port=$PORT $JAR_OPTS
+web: java $JAVA_OPTS -cp target/classes:target/dependency/* WptExcelIntegration --port $PORT
