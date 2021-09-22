@@ -11,7 +11,8 @@
 ##### 1. Setting up a java project.
   * WPT API Key, Get yours from here [WebPageTest API Key](https://app.webpagetest.org/ui/entry/wpt/signup?enableSub=true&utm_source=docs&utm_medium=github&utm_campaign=slackbot&utm_content=account)
   * Clone this repository.
-  * Update ngrokUrl in application.properties file (ngrokurl="")
+  * Update ngrokUrl in application.properties file (ngrokurl=)
+  * Add your secret api in application.properties file(api_key=)
   
   
  We have currently two APIs to serve requests
@@ -27,21 +28,24 @@
  * Now our server is publicly accessible by the URLs returned by ngrok.
 
 ##### 4. Creation of Excel sheet
- * Create a new Excel file(.xlsx) "Book1.xlsx" and save it under 'D:' drive (taking example of windows). I've used "Book1" as name for the excel sheet.
+ * Create a new Excel file(.xlsx) "BulkTest.xlsx" and save it under 'D:' drive (taking example of windows). I've used "BulkTest" as name for the excel sheet.
 
  * OK, you’ve created it! Now, please make sure you have two sheets("RequestSheet", "ResultMetric") inside your excel file.
 
- * "RequestSheet" will contain 'test-Urls', 'API-Key', 'Location'. 
- 
- * "ResultMetric", this sheet will be used to populate the test results. Mention your test request data from 'median' view of json result e.g. chromeUserTiming.CumulativeLayoutShift, SpeedIndex, TotalBlockingTime(upto 7 cells in ResultMetric sheet).
+ * "RequestSheet" will contain 'test-Urls', 'Location'. 
 
-   ![image](https://user-images.githubusercontent.com/81590480/126377055-65c1dfd2-cde5-40e6-a954-11da93b5df3e.png)
+   <img width="234" alt="RequestSheet" src="https://user-images.githubusercontent.com/81590480/134351402-cc87e47f-7eb4-4b78-80db-88d95131b6d8.PNG">
+   
+ 
+ * "ResultMetric", this sheet will be used to populate the test results. Mention your test request data(in first row of ResultMetric sheet) from 'median' view of json result    e.g. chromeUserTiming.CumulativeLayoutShift, SpeedIndex, TotalBlockingTime(upto max 7 cells in ResultMetric sheet). Do not leave any of the cell as an empty cell, you        should have your test request metric in these cells.
+
+   <img width="450" alt="ResultMetric" src="https://user-images.githubusercontent.com/81590480/134351594-89661700-67c9-4c8b-b795-0b4377cf24fb.PNG">
  
 
- * After setting up everything as mentioned above, then hit /submittest as a "POST" request from postman or by any other means.
+ * After setting up everything as mentioned above, run your application and hit /submittest as a "POST" request from postman or by any other means.
    E.G. - > http://localhost:8080/submittest/
 
- * Once all these things are done and submitted, you will get your desired results in your "ResultSheet" once pingback url has successfully captured test results
+ * Once all these things are done and submitted, you will get your desired results in your "ResultMetric" sheet once pingback url has successfully captured test results
    
 
-  ![image](https://user-images.githubusercontent.com/81590480/126377200-947609df-9963-4ad9-9cb6-c6e2674e11ab.png)
+    <img width="525" alt="ResultSheet" src="https://user-images.githubusercontent.com/81590480/134356313-71f45901-27ec-4256-845d-0a37ff4e98f2.PNG">
