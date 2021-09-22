@@ -30,8 +30,8 @@ public class ExcelController {
 	@Value(value = "${ngrokurl}")
 	private String ngrokUrl;
 
-//	@Value(value = "${api_key}")
-//	private String apiKey;
+	@Value(value = "${api_key}")
+	private String apiKey;
 
 	@Autowired
 	private ExportExcel exportExcel;
@@ -39,10 +39,10 @@ public class ExcelController {
 	@Autowired
 	private ReadExcelHelper readExcel;
 
-	@GetMapping(value = "/submittest")
+	@PostMapping(value = "/submittest")
 	public void getPerfDetail() throws JsonMappingException, JsonProcessingException, InterruptedException {
 
-		List<Url> data = readExcel.readExcelFile("D:/Book1.xlsx");
+		List<Url> data = readExcel.readExcelFile("D:/BulkTest.xlsx");
 
 		String jsonString = convertObjects2JsonString(data);
 
@@ -52,11 +52,9 @@ public class ExcelController {
 
 			JSONObject obj = jsonArray.getJSONObject(i);
 
-			String url = "https://www.webpagetest.org/runtest.php?url=" + obj.get("url") + "&k=" + obj.get("key") + "&location="
+			String url = "https://www.webpagetest.org/runtest.php?url=" + obj.get("url") + "&k=" + apiKey + "&location="
 					+ obj.get("location") + "&fvonly=1&f=json" + "&pingback=" + ngrokUrl + "/testresult";
 
-			System.out.println(url);
-			
 			restTemplate.getForEntity(url, String.class);
 
 		}

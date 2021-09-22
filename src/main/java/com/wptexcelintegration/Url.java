@@ -10,14 +10,11 @@ public class Url {
 	private String url;
 
 	private String location;
-	
-	private String key;
-
 
 	@Override
 	public String toString() {
 
-		return "Url [url=" + url + ", key=" + key + ", location=" + location + "]";
+		return "Url [url=" + url + ", location=" + location + "]";
 	}
 
 	public String getLocation() {
@@ -34,14 +31,6 @@ public class Url {
 
 	public void setUrl(String url) {
 		this.url = url;
-	}
-	
-	public String getKey() {
-		return key;
-	}
-
-	public void setKey(String key) {
-		this.key = key;
 	}
 
 }

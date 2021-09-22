@@ -29,7 +29,9 @@ public class ExportExcel {
 
 	public void writeObjectsToExcelFile(JsonNode fetchedData) throws IOException {
 
-		String filePath = "D:\\Book1.xlsx";
+		String filePath = "D:\\BulkTest.xlsx";
+
+		FileInputStream inputStream = null;
 
 		File file = new File(filePath);
 
@@ -41,10 +43,8 @@ public class ExportExcel {
 			}
 
 			else {
-				try (FileInputStream fI = new FileInputStream(file)) {
-					workbook = new XSSFWorkbook(fI);
-
-				}
+				inputStream = new FileInputStream(file);
+				workbook = new XSSFWorkbook(inputStream);
 			}
 
 			XSSFSheet spreadsheet = workbook.getSheet("RequestSheet");
@@ -58,7 +58,7 @@ public class ExportExcel {
 				spreadsheet = workbook.createSheet("ResultMetric");
 			}
 
-			List<ResultMetric> data = readResultExcel.readResultMetricExcelFile("D:/Book1.xlsx");
+			List<ResultMetric> data = readResultExcel.readResultMetricExcelFile(filePath);
 
 			String jsonString = convertObjects2JsonString(data);
 
@@ -92,15 +92,21 @@ public class ExportExcel {
 				XSSFCell cell7 = row.createCell(6);
 				cell7.setCellValue(fetchedData.get(obj.get("requestData7").toString()).toString());
 
-				FileOutputStream outputStream = new FileOutputStream(file);
-				workbook.write(outputStream);
 			}
+
+			if (inputStream != null)
+				inputStream.close();
+
+			FileOutputStream outputStream = new FileOutputStream(file);
+			workbook.write(outputStream);
+			outputStream.close();
+			workbook.close();
+
+			System.out.println("Exported excel successfully");
 
 		} catch (UnsupportedOperationException e) {
 			e.printStackTrace();
 		}
-
-		System.out.println("Exported excel successfully");
 
 	}
 

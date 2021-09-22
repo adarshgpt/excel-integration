@@ -32,19 +32,19 @@ public class ReadExcel {
 		while (cellIterator.hasNext()) {
 			Cell cell = cellIterator.next();
 
-			if (cellIndex == 0 && cell != null) {
+			if (cellIndex == 0) {
 				res.setRequestData1(cell.getStringCellValue());
-			} else if (cellIndex == 1 && cell != null) {
+			} else if (cellIndex == 1) {
 				res.setRequestData2(cell.getStringCellValue());
-			} else if (cellIndex == 2 && cell != null) {
+			} else if (cellIndex == 2) {
 				res.setRequestData3(cell.getStringCellValue());
-			} else if (cellIndex == 3 && cell != null) {
+			} else if (cellIndex == 3) {
 				res.setRequestData4(cell.getStringCellValue());
-			} else if (cellIndex == 4 && cell != null) {
+			} else if (cellIndex == 4) {
 				res.setRequestData5(cell.getStringCellValue());
-			} else if (cellIndex == 5 && cell != null) {
+			} else if (cellIndex == 5) {
 				res.setRequestData6(cell.getStringCellValue());
-			} else if (cellIndex == 6 && cell != null) {
+			} else if (cellIndex == 6) {
 				res.setRequestData7(cell.getStringCellValue());
 			}
 
